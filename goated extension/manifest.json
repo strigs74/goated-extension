@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "fake robux gifter",
+  "version": "6.7",
+  "description": "flexflexflex i just start the day like this",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.roblox.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
