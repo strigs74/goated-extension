@@ -17,9 +17,10 @@ we having days of fun with this one
 ###### **setup**
 
 1. go to "www.roblox.com/upgrades/robux"
-2. click the fake robux gifter extension
-3. enable "Extension enabled" and "Fake balance"
-4. click on "Random" to set a random fake robux amount or set one yourself
+2. enter your license key
+3. click the fake robux gifter extension in the top right corner of your browser
+4. enable "Extension enabled" and "Fake balance"
+5. click on "Random" to set a random fake robux amount or set one yourself
 
 
 
