@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    /* ... Keep your existing styles ... */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 260px; background: #1a1b1e; color: #fff; font-family: sans-serif; padding: 16px; min-height: 350px; }
+    h2 { font-size: 14px; color: #aaa; text-transform: uppercase; margin-bottom: 14px; }
+    .row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .sub { font-size: 12px; color: #888; }
+    
+    /* Toggle & Buttons */
+    .toggle { position: relative; width: 42px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; inset: 0; background: #3a3a55; border-radius: 999px; cursor: pointer; }
+    .slider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.2s; }
+    input:checked + .slider { background: #3b5bdb; }
+    input:checked + .slider::before { transform: translateX(18px); }
+    .divider { height: 1px; background: #2d2d4a; margin: 14px 0; }
+    button { padding: 9px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; }
+    
+    /* Views */
+    #view-main, #view-friends { display: none; }
+    .active-view { display: block !important; }
+
+    /* Friends List UI */
+    .friend-input-group { display: flex; gap: 8px; margin-bottom: 12px; }
+    #friend-name-input { flex: 1; background: #2a2a40; border: 1.5px solid #3a3a55; border-radius: 8px; padding: 8px; color: white; }
+    #friend-list-container { max-height: 180px; overflow-y: auto; background: #111; border-radius: 8px; padding: 4px; }
+    .friend-item { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid #222; font-size: 13px; }
+    .remove-friend { color: #ff6b6b; cursor: pointer; font-weight: bold; padding: 0 4px; }
+    
+    .back-btn { background: none; color: #888; margin-bottom: 10px; padding: 0; text-align: left; }
+    #btn-manage-friends { width: 100%; background: #2a2a40; color: white; margin-top: 10px; border: 1px solid #3a3a55; }
+    #btn-add-friend { background: #3b5bdb; color: white; }
+  </style>
+</head>
+<body>
+  <!-- MAIN VIEW -->
+  <div id="view-main" class="active-view">
+    <h2>Fake Robux Gifter</h2>
+    <div class="row">
+      <div><div>Extension enabled</div><div class="sub">Global Toggle</div></div>
+      <label class="toggle"><input type="checkbox" id="toggle-enabled" /><span class="slider"></span></label>
+    </div>
+    <div class="row">
+      <div><div>Fake balance</div><div class="sub">Replace Robux counter</div></div>
+      <label class="toggle"><input type="checkbox" id="toggle-balance" /><span class="slider"></span></label>
+    </div>
+    <div class="row">
+      <div><div>Fake Friends</div><div class="sub">Show custom friends list</div></div>
+      <label class="toggle"><input type="checkbox" id="toggle-friends" /><span class="slider"></span></label>
+    </div>
+    <button id="btn-manage-friends">⚙️ Manage Fake Friends</button>
+    <div class="divider"></div>
+    <div id="balance-display" style="font-size: 22px; font-weight: bold; margin-bottom: 8px;">0</div>
+    <input type="number" id="custom-amount" style="width:100%; padding:8px; margin-bottom:8px;" placeholder="Custom amount..." />
+    <div style="display:flex; gap:8px;">
+      <button id="btn-set" style="flex:1; background:#3b5bdb; color:white;">Set</button>
+      <button id="btn-random" style="flex:1; background:#2a2a40; color:white;">Random</button>
+    </div>
+  </div>
+
+  <!-- FRIENDS VIEW -->
+  <div id="view-friends">
+    <button class="back-btn" id="btn-back">← Back</button>
+    <h2>Fake Friends List</h2>
+    <div class="friend-input-group" style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; gap: 8px;">
+            <input type="text" id="friend-name-input" placeholder="Roblox Username..." />
+            <button id="btn-add-friend">Add</button>
+        </div>
+        <label style="font-size: 12px; display: flex; align-items: center; gap: 5px; color: #aaa; cursor: pointer;">
+            <input type="checkbox" id="verify-next-friend"> Verified Badge?
+        </label>
+    </div>
+  <div id="friend-list-container"></div> 
+</div>
+
+  <div class="saved-msg" id="saved-msg" style="text-align:center; color:#4caf50; font-size:12px; margin-top:8px;"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
