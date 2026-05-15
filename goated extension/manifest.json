@@ -10,7 +10,9 @@
   },
   "host_permissions": [
   "https://script.google.com/*",
-  "https://script.googleusercontent.com/*"
+  "https://script.googleusercontent.com/*",
+  "https://thumbnails.roblox.com/*",
+  "https://www.roblox.com/*"
 ],
   "permissions": [
     "storage"
