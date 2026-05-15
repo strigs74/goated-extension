@@ -1,17 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "fake robux gifter",
-  "version": "6.7",
+  "name": "Fake Robux Gifter",
+  "version": "0.2",
   "description": "flexflexflex i just start the day like this",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon128.png"
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.roblox.com/*"],
-      "js": ["content.js"]
+      "matches": [
+        "*://*.roblox.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
     }
   ]
 }
