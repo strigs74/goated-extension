@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 260px;
+      background: #1a1b1e;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 16px;
+    }
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .row label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #e8e9ec;
+    }
+    .row .sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+    }
+    /* Toggle switch */
+    .toggle {
+      position: relative;
+      width: 42px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #3a3a55;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      left: 3px; top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .toggle input:checked + .slider { background: #3b5bdb; }
+    .toggle input:checked + .slider::before { transform: translateX(18px); }
+
+    .divider { height: 1px; background: #2d2d4a; margin: 14px 0; }
+
+    .balance-label {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+    .balance-display {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    input[type="number"] {
+      width: 100%;
+      background: #2a2a40;
+      border: 1.5px solid #3a3a55;
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 8px;
+    }
+    input[type="number"]:focus { border-color: #3b5bdb; }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    input[type="number"] { -moz-appearance: textfield; }
+
+    .btn-row { display: flex; gap: 8px; }
+    button {
+      flex: 1;
+      padding: 9px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button:hover { opacity: 0.85; }
+    #btn-set { background: #3b5bdb; color: #fff; }
+    #btn-random { background: #2a2a40; color: #e8e9ec; border: 1px solid #3a3a55; }
+    .saved-msg {
+      font-size: 12px;
+      color: #4caf50;
+      text-align: center;
+      margin-top: 8px;
+      min-height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Fake Robux Gifter</h2>
+
+  <div class="row">
+    <div>
+      <div class="label" style="font-size:14px;font-weight:500;color:#e8e9ec;">Extension enabled</div>
+      <div class="sub">Intercepts Send Robux dialog</div>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" id="toggle-enabled" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="label" style="font-size:14px;font-weight:500;color:#e8e9ec;">Fake balance</div>
+      <div class="sub">Replace Robux counter</div>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" id="toggle-balance" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="balance-label">Current fake balance</div>
+  <div class="balance-display" id="balance-display">0</div>
+
+  <input type="number" id="custom-amount" placeholder="Enter custom amount..." min="0" />
+  <div class="btn-row">
+    <button id="btn-set">Set amount</button>
+    <button id="btn-random">Random</button>
+  </div>
+  <div class="saved-msg" id="saved-msg"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
