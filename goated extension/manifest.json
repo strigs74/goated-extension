@@ -1,13 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Fake Robux Gifter",
-  "version": "0.3",
+  "version": "1.0",
   "description": "flexflexflex i just start the day like this",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
+  "host_permissions": [
+  "https://script.google.com/*",
+  "https://script.googleusercontent.com/*"
+],
   "permissions": [
     "storage"
   ],
@@ -18,7 +22,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.roblox.com/*"
+        "*://www.roblox.com/*"
       ],
       "js": [
         "content.js"
